@@ -1,0 +1,29 @@
+name: Render Jinja 2 Template
+author: Sam Anthony
+
+inputs:
+  env-name:
+    required: true
+  template-file-path:
+    required: true
+  output-file-path:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Setup Python on build environment
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.10'
+
+  - name: Setup Python PIP Packages on build environment
+    shell: bash
+    run: pip install jinja2 requests boto3
+
+  - name: Render template
+    shell: bash
+    run: |
+      python render-j2-template.py ${{ inputs.template-file-path }} > ${{ inputs.output-file-path }}
+    env:
+      ENV_NAME: ${{ inputs.env-name }}
