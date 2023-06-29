@@ -12,5 +12,14 @@ NOTE: the rendering of the template does contain some logic specific to Zitcha
 #### Example
 
 ```yaml
-   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Render J2 Template
+        uses: the-pistol/github-action-render-jinja2-template@main
+        with:
+          env-name: dev
+          template-file-path: my-template.j2
+          output-file-path: my-output.txt
 ```
