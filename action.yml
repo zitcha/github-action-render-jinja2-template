@@ -24,10 +24,13 @@ runs:
   - name: Render template
     shell: bash
     run: |
+      ls -la
+      echo "action_path:"
+      echo ${{ github.action_path }}
       echo "template-file-path:"
       echo ${{ inputs.template-file-path }}
       echo "output-file-path:"
       echo ${{ inputs.output-file-path }}
-      python render-j2-template.py ${{ inputs.template-file-path }} > ${{ inputs.output-file-path }}
+      python ${{ github.action_path }}/render-j2-template.py ${{ inputs.template-file-path }} > ${{ inputs.output-file-path }}
     env:
       ENV_NAME: ${{ inputs.env-name }}
