@@ -33,6 +33,9 @@ import requests
     <<< env_name >>>
     Get the "Zitcha Environment" which is the same as the current Git branch. This is equivalent to <<<env_vars('GITHUB_REF_NAME')>>>
 
+    <<< fnd_name >>>
+    <<< org_name >>>
+
     All other features of Jinja2 should be available in the template
 """
 
@@ -171,7 +174,9 @@ j2env.globals.update(
     environment_secrets=get_environment_secrets,
     foundation_secrets=get_foundation_secrets,
     organization_secrets=get_organization_secrets,
-    env_name=ENV_NAME
+    env_name=ENV_NAME,
+    fnd_name=FND_NAME,
+    org_name=ORG_NAME
 )
 
 #
