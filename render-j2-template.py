@@ -105,15 +105,15 @@ def get_environment_secrets():
     return get_aws_secret(get_env_param('secrets-manager/main'))
 
 
-def get_gh_secret(secret_name):
-    response = requests.get('https://api.github.com/orgs/the-pistol/actions/secrets/' + secret_name,
-                            headers={
-                                'Accept': 'application/vnd.github+json',
-                                'Authorization': 'Bearer ' + os.environ.get('GITHUB_TOKEN'), # GITHUB_TOKEN is set by GitHub actions
-                                'X-GitHub-Api-Version': '2022-11-28'
-                            })
-
-    return response.content
+# def get_gh_secret(secret_name):
+#     response = requests.get('https://api.github.com/orgs/zitcha/actions/secrets/' + secret_name,
+#                             headers={
+#                                 'Accept': 'application/vnd.github+json',
+#                                 'Authorization': 'Bearer ' + os.environ.get('GITHUB_TOKEN'), # GITHUB_TOKEN is set by GitHub actions
+#                                 'X-GitHub-Api-Version': '2022-11-28'
+#                             })
+#
+#     return response.content
 
 
 #
